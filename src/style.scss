@@ -550,6 +550,7 @@ body {
   color: $text-white;
   text-align: center;
   padding: $spacing-xxl 0;
+  padding-top: calc($spacing-xxl + 80px); // Добавляем отступ для header
   position: relative;
   overflow: hidden;
   
@@ -865,8 +866,8 @@ section {
       content: '';
       position: absolute;
       top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      right: 0;
+      transform: translateY(-50%);
       width: 500px;
       height: 500px;
       background: 
@@ -1030,6 +1031,7 @@ section {
   justify-content: flex-end;
   gap: $spacing-xl;
   flex-direction: column;
+  width: 100%;
   
   .stat {
     background: $text-white;
@@ -1037,6 +1039,7 @@ section {
     padding: $spacing-xl $spacing-lg;
     text-align: center;
     min-width: 200px;
+    width: 100%;
     position: relative;
     overflow: hidden;
     @include box-shadow($shadow-dark, 10px, 30px);
@@ -1146,7 +1149,9 @@ section {
       
       @media (max-width: 768px) {
         left: 50%;
-        transform: translate(15%, -50%);
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
       }
     }
     
@@ -1814,6 +1819,7 @@ section {
   
   .hero {
     padding: $spacing-xl 0;
+    padding-top: calc($spacing-xl + 70px); // Меньший отступ для мобильных
     min-height: 90vh;
     
     .hero-content {
@@ -1903,12 +1909,19 @@ section {
       }
       
       .about-image {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+                
         .stats {
           flex-direction: column;
           gap: $spacing-md;
+          width: 100%;
+          max-width: 300px;
           
           .stat {
-            min-width: 140px;
+            min-width: auto;
+            width: 100%;
             padding: $spacing-md $spacing-sm;
             
             h3 {
@@ -2103,11 +2116,17 @@ section {
       }
       
       .about-image {
+        display: flex;
+        justify-content: center;
+        
         .stats {
           gap: $spacing-sm;
+          width: 100%;
+          max-width: 280px;
           
           .stat {
-            min-width: 120px;
+            min-width: auto;
+            width: 100%;
             padding: $spacing-sm;
             
             h3 {
@@ -2341,6 +2360,54 @@ section {
         
         p {
           font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+// Very small screens
+@media (max-width: 480px) {
+  .about {
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+      
+      &::before {
+        width: 200px;
+        height: 200px;
+        top: 85%;
+        right: 0;
+        transform: translateY(-50%);
+      }
+      
+      &::after {
+        width: 100px;
+        height: 100px;
+        top: 20%;
+        right: 5%;
+      }
+      
+      .about-image {
+        &::before {
+          width: 150px;
+          height: 150px;
+        }
+        
+        .stats {
+          max-width: 250px;
+          
+          .stat {
+            padding: $spacing-sm;
+            
+            h3 {
+              font-size: 1.4rem;
+            }
+            
+            p {
+              font-size: 0.65rem;
+            }
+          }
         }
       }
     }

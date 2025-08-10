@@ -86,7 +86,7 @@
           <div class="about-image animate-on-scroll" data-animation="fadeInRight">
             <div class="stats">
               <div class="stat animate-on-scroll" data-animation="fadeInUp" data-delay="0">
-                <h3>{{ experienceYears }}+</h3>
+                <h3>{{ experienceYears }}</h3>
                 <p>Опыта</p>
               </div>
               <div class="stat animate-on-scroll" data-animation="fadeInUp" data-delay="200">
@@ -413,7 +413,6 @@ export default {
       const diffTime = Math.abs(currentDate - startDate);
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       const years = Math.floor(diffDays / 365);
-      const months = Math.floor((diffDays % 365) / 30);
       
       // Склонение для "лет"
       let yearsText = 'лет';
@@ -423,25 +422,16 @@ export default {
         yearsText = 'года';
       }
       
-      // Склонение для "месяцев"
-      let monthsText = 'месяцев';
-      if (months % 10 === 1 && months % 100 !== 11) {
-        monthsText = 'месяц';
-      } else if ([2, 3, 4].includes(months % 10) && ![12, 13, 14].includes(months % 100)) {
-        monthsText = 'месяца';
-      }
-      
-      return `${years} ${yearsText} и ${months} ${monthsText}`;
+      return `более ${years} ${yearsText}`;
     },
     
-    // Метод для творительного падежа (с, годами, месяцами)
+    // Метод для творительного падежа (с, годами)
     experienceYearsInstrumental() {
       const startDate = new Date('2019-11-01');
       const currentDate = new Date();
       const diffTime = Math.abs(currentDate - startDate);
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       const years = Math.floor(diffDays / 365);
-      const months = Math.floor((diffDays % 365) / 30);
       
       // Склонение для "годами" (творительный падеж)
       let yearsText = 'годами';
@@ -451,15 +441,7 @@ export default {
         yearsText = 'годами';
       }
       
-      // Склонение для "месяцами" (творительный падеж)
-      let monthsText = 'месяцами';
-      if (months % 10 === 1 && months % 100 !== 11) {
-        monthsText = 'месяцем';
-      } else if ([2, 3, 4].includes(months % 10) && ![12, 13, 14].includes(months % 100)) {
-        monthsText = 'месяцами';
-      }
-      
-      return `${years} ${yearsText} и ${months} ${monthsText}`;
+      return `более ${years} ${yearsText}`;
     }
   },
   mounted() {
