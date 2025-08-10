@@ -30,7 +30,7 @@
             Привет, я <span class="highlight">Наронов Артем</span>
           </h1>
           <p class="hero-subtitle">
-            Frontend разработчик с {{ experienceYears }} годами опыта. Создаю современные и интерактивные веб-приложения с использованием передовых технологий
+            Frontend разработчик с {{ experienceYearsInstrumental }} опыта. Создаю современные и интерактивные веб-приложения с использованием передовых технологий
           </p>
           <div class="hero-buttons">
             <button class="btn btn-primary" @click="scrollToSection('projects')">
@@ -53,7 +53,7 @@
               <span class="property">birthDate:</span> <span class="string">'1995-05-09'</span>,
             </div>
             <div class="code-line indent-1">
-              <span class="property">experience:</span> <span class="string">'{{ experienceYears }} лет'</span>,
+              <span class="property">experience:</span> <span class="string">'{{ experienceYears }}'</span>,
             </div>
             <div class="code-line indent-1">
               <span class="property">skills:</span> [<span class="string">'Vue'</span>, <span class="string">'Nuxt'</span>, <span class="string">'Pinia'</span>],
@@ -87,7 +87,7 @@
             <div class="stats">
               <div class="stat animate-on-scroll" data-animation="fadeInUp" data-delay="0">
                 <h3>{{ experienceYears }}+</h3>
-                <p>Года опыта</p>
+                <p>Опыта</p>
               </div>
               <div class="stat animate-on-scroll" data-animation="fadeInUp" data-delay="200">
                 <h3>10+</h3>
@@ -429,6 +429,34 @@ export default {
         monthsText = 'месяц';
       } else if ([2, 3, 4].includes(months % 10) && ![12, 13, 14].includes(months % 100)) {
         monthsText = 'месяца';
+      }
+      
+      return `${years} ${yearsText} и ${months} ${monthsText}`;
+    },
+    
+    // Метод для творительного падежа (с, годами, месяцами)
+    experienceYearsInstrumental() {
+      const startDate = new Date('2019-11-01');
+      const currentDate = new Date();
+      const diffTime = Math.abs(currentDate - startDate);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const years = Math.floor(diffDays / 365);
+      const months = Math.floor((diffDays % 365) / 30);
+      
+      // Склонение для "годами" (творительный падеж)
+      let yearsText = 'годами';
+      if (years % 10 === 1 && years % 100 !== 11) {
+        yearsText = 'годом';
+      } else if ([2, 3, 4].includes(years % 10) && ![12, 13, 14].includes(years % 100)) {
+        yearsText = 'годами';
+      }
+      
+      // Склонение для "месяцами" (творительный падеж)
+      let monthsText = 'месяцами';
+      if (months % 10 === 1 && months % 100 !== 11) {
+        monthsText = 'месяцем';
+      } else if ([2, 3, 4].includes(months % 10) && ![12, 13, 14].includes(months % 100)) {
+        monthsText = 'месяцами';
       }
       
       return `${years} ${yearsText} и ${months} ${monthsText}`;
