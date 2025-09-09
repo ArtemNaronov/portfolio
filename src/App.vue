@@ -7,14 +7,14 @@
     <header class="header">
       <nav class="nav">
         <div class="nav-brand">Portfolio</div>
-        <ul class="nav-menu">
+        <ul class="nav-menu" :class="{ 'nav-menu-open': isMenuOpen }">
           <li><a href="#home" @click="scrollToSection('home')">Главная</a></li>
           <li><a href="#about" @click="scrollToSection('about')">Обо мне</a></li>
           <li><a href="#skills" @click="scrollToSection('skills')">Навыки</a></li>
           <li><a href="#projects" @click="scrollToSection('projects')">Проекты</a></li>
           <li><a href="#contact" @click="scrollToSection('contact')">Контакты</a></li>
         </ul>
-        <div class="nav-toggle" @click="toggleMenu">
+        <div class="nav-toggle" :class="{ 'nav-toggle-open': isMenuOpen }" @click="toggleMenu">
           <span></span>
           <span></span>
           <span></span>
@@ -394,9 +394,9 @@ export default {
         { name: 'HTML/CSS', level: 95, icon: 'html-logo' },
         { name: 'JavaScript', level: 90, icon: 'js-logo' },
         { name: 'Vue.js', level: 85, icon: 'vue-logo' },
-        { name: 'Git', level: 70, icon: 'git-logo' },
-        { name: 'React', level: 50, icon: 'react-logo' },
         { name: 'Nuxt.js', level: 80, icon: 'nuxt-logo' },
+        { name: 'React', level: 50, icon: 'react-logo' },
+        { name: 'Git', level: 70, icon: 'git-logo' },
         { name: 'Vuex', level: 85, icon: 'vuex-logo' },
         { name: 'Pinia', level: 80, icon: 'pinia-logo' },
         { name: 'TypeScript', level: 50, icon: 'ts-logo' },

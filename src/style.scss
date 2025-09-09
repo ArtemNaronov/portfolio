@@ -552,13 +552,18 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    padding: 5px;
+    
     
     span {
       width: 25px;
       height: 3px;
-      background: $text-dark;
+      background: #333;
       margin: 3px 0;
       transition: all $transition-fast ease;
+      transform-origin: center;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     }
   }
 }
@@ -1529,6 +1534,9 @@ section {
       
       .project-content {
         padding: $spacing-lg;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
         
         h3 {
           font-size: 1.3rem;
@@ -1541,6 +1549,7 @@ section {
           color: $text-light;
           margin-bottom: $spacing-md;
           line-height: 1.6;
+          flex-grow: 1;
         }
         
         .project-tech {
@@ -1575,7 +1584,9 @@ section {
 }
 
 .project-wrapper {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   text-decoration: none;
   color: inherit;
   transition: all $transition-fast ease;
@@ -1588,7 +1599,7 @@ section {
 .project-links {
   display: flex;
   gap: $spacing-sm;
-  margin-top: $spacing-md;
+  margin-top: auto;
   
   .project-link {
     padding: $spacing-sm $spacing-md;
@@ -1798,7 +1809,7 @@ section {
     visibility: hidden;
     transition: all $transition-normal ease;
     
-    &.active {
+    &.nav-menu-open {
       transform: translateY(0);
       opacity: 1;
       visibility: visible;
@@ -1894,18 +1905,18 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border-top: 1px solid rgba(102, 126, 234, 0.1);
     
-    &.active {
+    &.nav-menu-open {
       transform: translateY(0);
       opacity: 1;
       visibility: visible;
     }
     
     li {
-      margin: $spacing-md 0;
+      margin: 0;
       
       a {
         font-size: 1.1rem;
-        padding: $spacing-md;
+        padding: $spacing-sm;
         display: block;
         text-align: center;
         border-radius: $border-radius-md;
@@ -1923,17 +1934,18 @@ section {
     display: flex !important;
     z-index: 1001;
     
-    &.active {
+    &.nav-toggle-open {
       span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        transform: rotate(45deg) translate(6px, 6px);
       }
       
       span:nth-child(2) {
         opacity: 0;
+        transform: scaleX(0);
       }
       
       span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
+        transform: rotate(-45deg) translate(6px, -6px);
       }
     }
   }
@@ -2495,9 +2507,9 @@ section {
       gap: $spacing-lg;
       
       &::before {
-        width: 200px;
-        height: 200px;
-        top: 85%;
+        width: 180px;
+        height: 180px;
+        top: 90%;
         right: 0;
         transform: translateY(-50%);
       }
