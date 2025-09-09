@@ -56,7 +56,7 @@
               <span class="property">experience:</span> <span class="string">'{{ experienceYears }}'</span>,
             </div>
             <div class="code-line indent-1">
-              <span class="property">skills:</span> [<span class="string">'Vue'</span>, <span class="string">'Nuxt'</span>, <span class="string">'Pinia'</span>],
+              <span class="property">skills:</span> [<span class="string">'Vue'</span>, <span class="string">'Nuxt'</span>, <span class="string">'Pinia'</span>, <span class="string">'React'</span>],
             </div>
             <div class="code-line indent-1">
               <span class="property">passion:</span> <span class="string">'Creating amazing UIs'</span>
@@ -75,7 +75,7 @@
           <div class="about-text animate-on-scroll" data-animation="fadeInLeft">
             <p>
               Меня зовут <strong>Наронов Артем Сергеевич</strong>, я увлеченный Frontend разработчик с опытом создания современных веб-приложений. 
-              Специализируюсь на Vue.js, Nuxt.js и JavaScript, создавая интуитивные и отзывчивые интерфейсы.
+              Специализируюсь на Vue.js, Nuxt.js, React и JavaScript, создавая интуитивные и отзывчивые интерфейсы.
             </p>
             <p>
               Родился <strong>9 мая 1995 года</strong>. Имею обширный опыт участия в разработке различных B2B порталов и интернет-магазинов, 
@@ -290,7 +290,7 @@
         <div class="projects-grid">
           <div class="project-card animate-on-scroll" v-for="(project, index) in projects" :key="project.id" 
                data-animation="fadeInUp" :data-delay="index * 200">
-            <a v-if="project.demoLink" :href="project.demoLink" target="_blank" class="project-link-wrapper">
+            <div class="project-wrapper">
               <div class="project-image">
                 <div class="project-placeholder">{{ project.icon }}</div>
               </div>
@@ -302,19 +302,13 @@
                     {{ tech }}
                   </span>
                 </div>
-              </div>
-            </a>
-            <div v-else>
-              <div class="project-image">
-                <div class="project-placeholder">{{ project.icon }}</div>
-              </div>
-              <div class="project-content">
-                <h3>{{ project.title }}</h3>
-                <p>{{ project.description }}</p>
-                <div class="project-tech">
-                  <span v-for="tech in project.technologies" :key="tech" class="tech-tag">
-                    {{ tech }}
-                  </span>
+                <div class="project-links">
+                  <a v-if="project.demoLink" :href="project.demoLink" target="_blank" class="project-link demo-link">
+                    🌐 Демо
+                  </a>
+                  <a v-if="project.githubLink" :href="project.githubLink" target="_blank" class="project-link github-link">
+                    📁 GitHub
+                  </a>
                 </div>
               </div>
             </div>
@@ -342,10 +336,15 @@
               <p>+7 (987) 387-50-91</p>
             </div>
           </a>
-          <a href="https://t.me/amirot_j" target="_blank" class="contact-item animate-on-scroll" data-animation="fadeInUp" data-delay="400">
-            <div class="contact-icon">💬</div>
+          <a href="https://t.me/amirot_j" target="_blank" class="contact-item contact-item-priority animate-on-scroll" data-animation="fadeInUp" data-delay="400">
+            <div class="contact-icon">
+              <svg class="crown-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm2.7 0L12 7l4.3 9H7.7z"/>
+                <path d="M12 8.5L10.5 10h3L12 8.5z"/>
+              </svg>
+            </div>
             <div>
-              <h3>Telegram</h3>
+              <h3>Telegram <span class="priority-badge">Приоритет</span></h3>
               <p>@amirot_j</p>
             </div>
           </a>
@@ -401,7 +400,17 @@ export default {
           description: 'Классическая игра 2048, реализованная как Telegram бот с использованием Vue.js',
           icon: '🎮',
           technologies: ['Vue.js', 'Telegram Bot API', 'JavaScript', 'CSS3'],
-          demoLink: 'https://t.me/vue_2048_bot/vue_2048'
+          demoLink: 'https://t.me/vue_2048_bot/vue_2048',
+          githubLink: 'https://github.com/ArtemNaronov/2048'
+        },
+        {
+          id: 3,
+          title: 'Team Manager',
+          description: 'Веб-приложение для управления командой с возможностью добавления, редактирования и удаления участников',
+          icon: '👥',
+          technologies: ['React', 'JavaScript', 'CSS3', 'HTML5'],
+          demoLink: 'https://artemnaronov.github.io/team-manager/',
+          githubLink: 'https://github.com/ArtemNaronov/team-manager/tree/main'
         }
       ]
     }

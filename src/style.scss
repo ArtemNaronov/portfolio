@@ -446,6 +446,32 @@ body {
   }
 }
 
+@keyframes crown-glow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    transform: scale(1);
+  }
+  100% {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+    transform: scale(1.05);
+  }
+}
+
+@keyframes gold-shine {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+}
+
 // ========================================
 // Header & Navigation
 // ========================================
@@ -1540,9 +1566,21 @@ section {
   }
 }
 
+.project-wrapper {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: all $transition-fast ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
 .project-links {
   display: flex;
   gap: $spacing-sm;
+  margin-top: $spacing-md;
   
   .project-link {
     padding: $spacing-sm $spacing-md;
@@ -1553,10 +1591,28 @@ section {
     font-size: 0.9rem;
     font-weight: 500;
     transition: all $transition-fast ease;
+    flex: 1;
+    text-align: center;
     
     &:hover {
       background: $secondary-color;
       transform: translateY(-2px);
+    }
+    
+    &.demo-link {
+      background: $primary-gradient;
+      
+      &:hover {
+        background: linear-gradient(145deg, $secondary-color 0%, $primary-color 100%);
+      }
+    }
+    
+    &.github-link {
+      background: #333;
+      
+      &:hover {
+        background: #555;
+      }
     }
   }
 }
@@ -1625,6 +1681,63 @@ section {
       p {
         color: $text-light;
         line-height: 1.6;
+      }
+    }
+    
+    .contact-item-priority {
+      position: relative;
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 255, 255, 0.15) 100%);
+      border: 2px solid $gold-color;
+      @include box-shadow(rgba(255, 215, 0, 0.3), 15px, 35px);
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: $gold-gradient;
+        border-radius: $border-radius-lg;
+        z-index: -1;
+        animation: gold-shine 3s ease-in-out infinite;
+      }
+      
+      &:hover {
+        @include box-shadow(rgba(255, 215, 0, 0.4), 20px, 40px);
+        transform: translateY(-10px) scale(1.05);
+        background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%);
+      }
+      
+      .contact-icon {
+        color: $gold-color;
+        position: relative;
+        
+        .crown-icon {
+          width: 2.5rem;
+          height: 2.5rem;
+          filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+          animation: crown-glow 2s ease-in-out infinite alternate;
+        }
+      }
+      
+      h3 {
+        color: $text-dark;
+        position: relative;
+        
+        .priority-badge {
+          display: inline-block;
+          background: $gold-gradient;
+          color: $text-dark;
+          padding: 0.2rem 0.5rem;
+          border-radius: $border-radius-sm;
+          font-size: 0.7rem;
+          font-weight: 700;
+          margin-left: 0.5rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          @include box-shadow(rgba(255, 215, 0, 0.3), 0, 5px);
+        }
       }
     }
   }
