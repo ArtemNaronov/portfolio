@@ -1410,52 +1410,60 @@ section {
 // Skill Icons
 // ========================================
 
-.vue-logo {
+// Общие стили для всех логотипов навыков
+.vue-logo,
+.nuxt-logo,
+.html-logo,
+.js-logo,
+.vuex-logo,
+.pinia-logo,
+.ts-logo,
+.sass-logo,
+.react-logo,
+.git-logo {
   width: 24px;
   height: 24px;
+}
+
+// Индивидуальные цвета для каждого логотипа
+.vue-logo {
   color: #4fc08d;
 }
 
 .nuxt-logo {
-  width: 24px;
-  height: 24px;
   color: #00c58e;
 }
 
 .html-logo {
-  width: 24px;
-  height: 24px;
   color: #e34f26;
 }
 
 .js-logo {
-  width: 24px;
-  height: 24px;
   color: #f7df1e;
 }
 
 .vuex-logo {
-  width: 24px;
-  height: 24px;
   color: #764ba2;
 }
 
 .pinia-logo {
-  width: 24px;
-  height: 24px;
   color: #52ce63;
 }
 
 .ts-logo {
-  width: 24px;
-  height: 24px;
   color: #3178c6;
 }
 
 .sass-logo {
-  width: 24px;
-  height: 24px;
   color: #cd6799;
+}
+
+.react-logo {
+  color: #53C1DE;
+}
+
+.git-logo {
+  color: #EE513B;
 }
 
 // ========================================
